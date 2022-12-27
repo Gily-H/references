@@ -226,9 +226,49 @@ ls -l \
 
 </br>
 
+## **SSH**
+Secure Shell (ssh) is the most common and secure way to connect to a remote UNIX machine
+|Command|Description|Format|Example|
+|:-:|:-|:-:|:-|
+|ssh|Connect to a remote machine|`ssh <remote-username>@<ip-address/fq-domain>`|ssh example.com|
+|sftp|Securely transfer files to/from a remote machine|`sftp <remote-username>@<ip-address/fq-domain>`|sftp example.com|
+|scp|Securely copy a file to/from the remote machine|`scp <source> <destination>`|scp example.txt <server>:<directory>|
+
+When connecting to a remote machine for the first time, you will be prompted to verify the correct RSA key fingerprint. Once verified, you will be prompted for the password of the user on the remote machine
+
+```bash
+# requires the remote username, followed by an '@', if the username on the remote machine differs from username on the local machine
+ssh <remote>
+```
+
+To transfer files to and from a remote machine, we can use the `sftp` (secure file transfer) command to open a prompt on the remote machine. Run the 'exit' command to leave the remote machine
+```bash
+# similar format to ssh
+sftp <remote>
+
+# sending a file to the remote machine when the sftp prompt (sftp>) is active
+put <file>
+
+# retrieving a file from the remote machine when the sftp prompt (sftp>) is active
+get <file>
+
+# using scp to move a file to the remote home directory - # : denotes a remote server
+scp my-file.txt <server>:~
+
+# using scp to retrieve a file from the remote machine - # -r to transfer a directory recursively
+scp -r <server>:~/remote-directory ./
+```
+
+</br>
+
+[_**Back to top ^**_](#table-of-contents)
+
+</br>
+
 # Glossary
 |Term|Definition|
 |:-|:-|
+
 |Current Working Directory|The directory you are in|
 |Absolute Path|Pathname begins with the root directory|
 |Relative Path|Pathname begins at the current working directory|
