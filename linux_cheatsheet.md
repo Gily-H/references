@@ -46,7 +46,7 @@
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -58,7 +58,7 @@
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -99,7 +99,7 @@ ls -l | less
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -144,7 +144,7 @@ file $(ls /usr/bin/* | grep bin/zip) # outputs type of file for files named with
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -170,7 +170,7 @@ echo 'text ~/*.txt {a,b} $(echo foo) $((2+2)) $USER' # outputs text ~/*.txt {a,b
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -196,7 +196,7 @@ ls -l \
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -222,7 +222,7 @@ ls -l \
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -236,6 +236,6 @@ ls -l \
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>

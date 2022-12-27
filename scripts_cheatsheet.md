@@ -69,7 +69,7 @@ Best practices linux distributions is to keep a `bin` directory in the `home` di
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -83,7 +83,7 @@ alias l='ls -l'
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -112,7 +112,7 @@ _EOF_
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -334,7 +334,7 @@ SIGKILL cannot be handled by a program and will always terminate any executing p
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -348,6 +348,6 @@ SIGKILL cannot be handled by a program and will always terminate any executing p
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
