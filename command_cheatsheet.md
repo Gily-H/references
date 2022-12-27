@@ -24,6 +24,7 @@
 |df|Provides drive  summary info including space used, space available, mount location|`df`|df
 |file|Will display the type of file we pass in as an argument|`file <file>`|file commands.txt|
 |find|Search for files or directories based on the given character expression|`find <in_directory> <expression>`|find . -type f|
+|gzip|Used to handle single file compression|`gzip <file>`|gzip filename|
 |help|Provide info on **built-in** shell commands|`help <command>`|help cd|
 |--help|Provide info on **executable program**|`<command> --help`|mkdir --help|
 |id|Tells us who the current user is|`id`|id|
@@ -39,7 +40,7 @@
 |pwd|Print the name of the **current working directory**|`pwd`|pwd|
 |RANDOM|Generate a random number|`$RANDOM`|echo $RANDOM|
 |rm|Remove files or directories|`rm <file>`|rm -r ./directory|
-|tar tzvf|View compressed tar files|`tar tzvf <file>`|tar tzvf file.tar.gz `|` less|
+|tar|Used to archive multiple files|`tar <file/directory>`|tar directory|
 |trap|Execute a command when our program receives a signal|`trap <commands to execute> <list of signals>`|trap "rm file; exit" SIGINT SIGTERM| 
 |type|Check command type|`type <command>`|type ls|
 |uptime|Provides system info on running time, last re-boot time, number of users, and system loads|`uptime`|uptime|
@@ -86,6 +87,28 @@ rm -r dir1 dir2
 
 # delete all files that end in a '~' character
 rm *~
+```
+
+### *compression examples*
+```bash
+# compression using gzip - will not save a copy of original file
+gzip filename
+
+# gzip decompression using -d
+gzip -d filename.gz
+
+# tar compression - # -c to create a new archive, -v for verbose output, -f specify arhive name
+# maintains the original file/directory
+tar -cvf <archive-name> <filename/directory>
+
+# compressing a tar archive will output a file with extension .tar.gz
+gzip directory.tar
+
+# shorthand for compressing a tar archive - # -z denote a zipped archive, .tgz is an abbr for .tar.gz
+tar -czvf directory.tgz <file/directory>
+
+# unpack a .tgz file - # -x to expand the .tgz file
+tar -xvf directory.tgz
 ```
 
 </br>
