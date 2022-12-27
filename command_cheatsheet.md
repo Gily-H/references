@@ -113,7 +113,7 @@ tar -xvf directory.tgz
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -136,7 +136,7 @@ tar -xvf directory.tgz
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -160,15 +160,45 @@ Find the binary representation of each group of bits
 |:-:|:-:|:-:|
 |7|6|4|
 
-To change the ownership of a file or directory, use the numbers to represent permissions for the owner, group, public, respectively
+To change the permissions of a file or directory, use the numbers to represent permissions for the owner, group, public, respectively
 ```bash
 # read write execute for owner, read write for group, read for everyone else
 chmod 764 some_file.txt
+
+# use shorthand to modify permissions - # + to add permissions, - to remove permissions
+# add write permission for the owner of the file
+chmod u+w <file>
+
+# remove read and write permissions for the group of the file
+chmod g-rw <file>
+
+# add read permission for other users
+chmod o+r <file>
+
+# give owner full permissions, and give group and others read and execute permissions
+chmod u=rwx,gr=rx <file>
+
+# give everyone read permission
+chmod a+r <file>
+
+# remove all permissions for other users for all files in the given directory including the directory itself
+chmod -R o-rwx <directory>
+```
+
+To change the owner of a file or directory, we can use the chown command. Only the root user is allowed to change the owner of a file/directory
+```bash
+# use the sudo command to act as the superuser
+sudo chown <owner-name> <file/directory>
+```
+
+To change the group users of a file or directory, we can use the chgrp command
+```bash
+chgrp <group-name> <file/directory>
 ```
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -184,7 +214,7 @@ chmod 764 some_file.txt
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -199,7 +229,7 @@ A short list some signals that can be sent to processes using the `kill` command
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -237,7 +267,7 @@ BACKUP.[[:digit:]][[:digit:]]
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
@@ -251,7 +281,7 @@ These can be used in place of the wildcard `[characters]` set
 
 </br>
 
-[***Back to top ^***](#table-of-contents)
+[_**Back to top ^**_](#table-of-contents)
 
 </br>
 
