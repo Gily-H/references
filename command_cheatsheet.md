@@ -21,6 +21,7 @@
 |alias|Create a new command|`alias <new-command>=<value>`|alias l='ls -l'|
 |cd|Change the working directory|`cd <directory>`|cd ~|
 |cp|Copy files and directories|`cp <file1> <file2>`|cp file1 file1.1|
+|date|Prints the date and time to standard output. Use a `+` to invoke formatting|`date +<formatting>`|date +%j|
 |df|Provides drive  summary info including space used, space available, mount location|`df`|df
 |file|Will display the type of file we pass in as an argument|`file <file>`|file commands.txt|
 |find|Search for files or directories based on the given character expression|`find <in_directory> <expression>`|find . -type f|
@@ -29,6 +30,7 @@
 |--help|Provide info on **executable program**|`<command> --help`|mkdir --help|
 |id|Tells us who the current user is|`id`|id|
 |less|View text files|`less <file>`|less commands.md|
+|let|Allows for arithmetic expressions|`let <expression>`|a=255; let "a++"|
 |ln|Create symbolic links to files|`ln <target-file> <link-name>`|ln commands.md summary|
 |lpr|Print files|`lpr <file>`|lpr filetoprint|
 |ls|List content in the current working directory|`ls <options> <directories>`|ls -la /bin /etc|
@@ -39,7 +41,9 @@
 |printenv|Print out the environment variables|`printenv`|printenv|
 |pwd|Print the name of the **current working directory**|`pwd`|pwd|
 |RANDOM|Generate a random number|`$RANDOM`|echo $RANDOM|
+|read|Read keyboard input|`read <variable-to-assign-input>`|read input|
 |rm|Remove files or directories|`rm <file>`|rm -r ./directory|
+|source|Executes a script|`source <script_file>`|source ~/.bashrc|
 |tar|Used to archive multiple files|`tar <file/directory>`|tar directory|
 |trap|Execute a command when our program receives a signal|`trap <commands to execute> <list of signals>`|trap "rm file; exit" SIGINT SIGTERM| 
 |type|Check command type|`type <command>`|type ls|

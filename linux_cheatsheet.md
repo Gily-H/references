@@ -116,6 +116,17 @@ echo $((5%2)) # will output 1
 echo $(((5**2) * 3)) # nested subexpressions need only one set of parenthesis - outputs 75
 ```
 
+*Note:* A variable containing only digits will be evaluated as an integer. The `null` value will usually be converted to an integer `0`. Bash will substitutea string value to equal `0` when used in an arithmetic expressions
+```bash
+b=BB44 # string value
+let "b += 1"
+echo $b # value of b is 1, b is an integer value
+
+c=TT29 # string value
+d=${c/TT/55} # replace TT with 55
+echo $d # value of d is 5529, an integer value
+``` 
+
 ## **Brace Expansion**
 Create multiple text strings. Brace expression can be a comma-separated list or a range of numerals/characters
 ```bash
@@ -139,7 +150,7 @@ Use the output of one command as an expression. The format for command substitut
 ```bash
 ls -l $(which cp) # outputs the file details for the 'cp' file without needing the full pathname
 ls -l `which cp` # outputs same as above
-file $(ls /usr/bin/* | grep bin/zip) # outputs type of file for files named with some form of `bin/zip` 
+file $(ls /usr/bin/*) | grep bin/zip) # outputs type of file for files named with some form of `bin/zip` 
 ```
 
 </br>

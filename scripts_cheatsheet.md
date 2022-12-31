@@ -281,16 +281,18 @@ set +x
 ```
 
 ## **Positional Parameters**
-Special variables ($0 - $9) that contain the contents of the command line
+Special variables ($0 - $9) that contain the contents of the command line. After the 9th argument, subsequent arguments can be accessed using the following notation `${<argument#>}`
 ```bash
-program arg1, arg2, arg3
+program arg1, arg2, arg3 ... arg10
 
 # $0 = program
 # $1 = arg1
 # $2 = arg2
 # $3 = arg3
+# ${10} = arg10
 ```
-The special variable `$#`contains the *number* of items on the command land
+The special variable `$#`contains the *number* of items on the command line
+The special variable `S*` and `S@` denote *all* the positional parameters
 
 ```bash
 if [ $# -gt 0 ]; then
