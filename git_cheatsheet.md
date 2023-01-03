@@ -21,7 +21,8 @@ _Note:_ All commands will be prefaced with the `git` command (git <command>)
 |Command|Description|Format|Example|
 |:-:|:-|:-:|:-|
 |add|Add/update files to the staging area to be tracked by git|`git add <files>`|git add -u|
-|branch|Display the branches of the repository|`git branch`|git branch|
+|branch|Display, create, remove branches of a repository|`git branch`|git branch|
+|cherry-pick|Select a single commit and apply to a branch|`git cherry-pick <commit-ID>`|git cherry-pick 223ea3f|
 |clean|Will remove untracked files from the working copy unless specified otherwise|`git clean <options>`|git clean|
 |clone|Download the history of a remote repository|`git clone <url>`|git clone https://github.com/Gily-H/references.git|
 |commit|Save changes from the staging area into the local repository|`git commit`|git commit -m "message"|
@@ -32,6 +33,7 @@ _Note:_ All commands will be prefaced with the `git` command (git <command>)
 |log|View a history of the commits for the repository|`git log`|git log --oneline|
 |merge|Merge changes into your local branch|`git merge <remote> <local>`|git merge origin/main|
 |pull|Fetch and merge the changes from a remote branch into your local branch|`git pull <remote> <local>`|git pull upstream main|
+|rebase|Replay a branch's commits and append them to another branch|`git rebase <base-branch>`|git rebase main|
 |reflog|Display a history of commits that the **HEAD** had previously pointed to|`git reflog`|git reflog|
 |remote|Used to manage a set of tracked repositories|`git remote <options>`|git remote -v|
 |reset|Revert the working copy to to a previous commit or to latest HEAD commit by default|`git reset`|git reset --hard|
@@ -162,13 +164,16 @@ git branch
 git branch -r
 
 # create a branch from a commit
-git branch <branch-name> <optional-commitID>
+git branch <branch-name> <optional-commitID/tag>
 
 # rename a branch
 git branch -m <branch> <new-branch-name>
 
 # force delete a local branch
 git branch -D <branch-name>
+
+# delete a remote branch
+git push origin :<remote-branch-name>
 
 # set the local branch to mirror an upstream remote branch
 git branch --set-upstream <local-branch> <remote-branch>
@@ -223,24 +228,35 @@ git branch <branch-name> <commit-ID>
 ```
 
 ## Stash
-We can save unfinished changes to the stash and reset our working copy to a clean state (unmodified). We can then bring back the stashed changes at a later time
+We can save unfinished changes to the stash and reset our working copy to a clean state (unmodified). We can then bring back the stashed changes at a later time. Changes will be applied in a last in first out (LIFO) policy
 
 ```bash
-# save pending changes made in the working copy to the stash queue
+# save pending changes made in the working copy to the stash list
 git stash
 
-# View the stash queue
+# View the stash list
 git stash list
 
-# Reapply the changes that were stashed (the stash still contains the changes)
+# Reapply the most recent stashed changes (the stash will still contain the changes)
 git stash apply
 
-# Remove the changes in the stash queue
+# Remove the most recent change in the stash list
 git stash drop
 
 # Shorthand for git stash apply & git stash drop
 git stash pop
 
-# create a branch and apply the stash - this will pop the changes off the stash queue
-git branch stash <branch-name>
+# create a branch and apply the stash - this will pop the changes off the stash list
+git stash branch <branch-name>
 ``` 
+
+## Rebase
+Replay the commits from one branch and append them to a base branch. This will make it appear as though the new branch's commits were added onto the base branch as regular commits
+
+```bash
+# rebase from feature branch to main branch
+git rebase main
+
+# if rebasing causes merge conflicts, resolve the conflicts and continue the rebase
+git rebase --continue
+```
