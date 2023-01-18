@@ -1,0 +1,42 @@
+pipeline {
+	agent any
+	environment {
+		RELEASE='20.01'
+	}
+	stages {
+		stage('Build') {
+			agent any
+			environment {
+				LOG_LEVEL='INFO'
+			}
+			steps {
+				echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+				sh 'chmod +x m2/demo3/build.sh'
+				withCredentials([string(credentialsId: 'an-api-key', variable: 'API_KEY')]) {
+					sh '''
+						./m2/demo3/build.sh
+					'''
+				}
+			}
+		}
+		stage('Test') {
+			steps {
+				echo "Testing build for release ${RELEASE}"
+				// run a Groovy script - any exceptions thrown during the Jenkins job will cause the build to fail
+				//  use of the Java API must be approved via the Jenkins UI before it can be used in a script inside the Jenkinsfile
+				//+ in this script, we need to approve the Math.random method and the Exception class
+				script {
+					if (Math.random() > 0.5) {
+						throw new Exception()
+					}
+				}
+				writeFile file: 'test-results.txt', text: 'passed'
+			}
+		}
+	}
+	post {
+		success {
+			archiveArtifacts 'test-results.txt'
+		}
+	}
+}

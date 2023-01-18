@@ -1,0 +1,33 @@
+pipeline {
+	agent any
+	environment {
+		RELEASE='20.01'
+	}
+	stages {
+		stage('Build') {
+			agent any
+			environment {
+				LOG_LEVEL='INFO'
+			}
+			steps {
+				echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+			}
+		}
+		stage('Test') {
+			steps {
+				echo "Testing build for release ${RELEASE}"
+				//  write to a file on the specified path ('test-results.txt') with the given text content ('passed')
+				//+ and save it to the workspace
+				writeFile file: 'test-results.txt', text: 'passed'
+			}
+		}
+	}
+	post {
+		// will only run when the build is successful
+		success {
+			//  take the given file ('test-results.txt') from the workspace and save it as an archive inside the Jenkins job
+			//+ archived artifacts can be viewed in the Jenkins UI for the specific Job
+			archiveArtifacts 'test-results.txt'
+		}
+	}
+}
