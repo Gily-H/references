@@ -1,0 +1,24 @@
+pipeline {
+	agent any
+	environment {
+		RELEASE='20.01'
+	}
+	stages {
+		stage('Build') {
+			agent any
+			environment {
+				LOG_LEVEL='INFO'
+			}
+			steps {
+				echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+			}
+		}
+		stage('Test') {
+			//  this step will cause the build to fail because it is trying to access an environment variable
+			//+ from a different stage
+			steps {
+				echo "This will cause a build failure for ${RELEASE} by trying to access ${LOG_LEVEL}"
+			}
+		}
+	}
+}

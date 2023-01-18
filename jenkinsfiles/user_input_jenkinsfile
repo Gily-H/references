@@ -1,0 +1,45 @@
+pipeline {
+	agent any
+	environment {
+		RELEASE='20.01'
+	}
+	stages {
+		stage('Build') {
+			agent any
+			environment {
+				LOG_LEVEL='INFO'
+			}
+			steps {
+				echo "Building release ${RELEASE} with log level ${LOG_LEVEL}..."
+			}
+		}
+		stage('Test') {
+			steps {
+				echo "Testing build for release ${RELEASE}"
+			}
+		}
+		stage('Deploy') {
+			//  build will pause at the input block and will wait for user-input
+			input {
+				// displays the message 'Deploy?'
+				message 'Deploy?'
+				// will display a button with message 'Do it!' - if the button is clicked, the build continues
+				// will also display an 'abort' button to exit the stage
+				ok 'Do it!'
+				// displays a text-input-box to allow the user to specify which environment to deploy to
+				parameters {
+					string(name: 'TARGET_ENVIRONMENT', defaultValue: 'PROD', description: 'Target deployment environment')
+				}
+			}
+			steps {
+				echo "Deploying release ${RELEASE} to environment ${TARGET_ENVIRONMENT}"
+			}
+		}
+	}
+	post {
+		// the 'always' condition will run the commands in the block whether the build fails or succeeds or is aborted
+		always {
+			echo 'Prints whether deploy happened or not, success or failure'
+		}
+	}
+}

@@ -1,0 +1,37 @@
+pipeline {
+	agent any
+	environment {
+		RELEASE='20.01'
+	}
+	stages {
+		stage('Build') {
+			agent any
+			environment {
+				LOG_LEVEL='INFO'
+			}
+			// will run the following stages in parallel
+			parallel {
+				stage('linux-arm64') {
+					steps {
+						echo "Building release ${RELEASE} with ${STAGE_NAME} with log level ${LOG_LEVEL}..."
+					}
+				}
+				stage('linux-amd64') {
+					steps {
+						echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
+					}
+				}
+				stage('windows-amd64') {
+					steps {
+						echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
+					}
+				}
+			}
+		}
+		stage('Test') {
+			steps {
+				echo "Tests for release ${RELEASE}"
+			}
+		}
+	}
+}
