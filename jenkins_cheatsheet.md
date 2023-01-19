@@ -1,7 +1,7 @@
 # Jenkins
 Jenkins uses Groovy to run pipeline jobs and inherits some properties of Groovy, including _string interpolation_
 
-### __String interpolation__
+## __String interpolation__
 - Use __double quotes__ (") for expansion to inject in variable values
 - use __single quotes__ (') for string literals
 - use __triple quotes__ (''') for multiline shell scripts
@@ -97,3 +97,52 @@ pipeline {
 	}
 
 ```
+
+
+# Shared Libraries
+Place to hold Groovy scripts that can be accessed by multiple Jenkinsfiles. Move Groovy scripts from Jenkinsfiles into their own script files (.groovy files)
+
+## Shared Library Structure
+- `/src` - contains Groovy source files
+- `/resources` - static data and config files
+- `/vars` - _global_ Groovy scripts
+
+## Groovy Scripts for Jenkins Shared Library
+- the `shared library` containing the scripts __MUST__ be in a separate source code repository, not in our project with the Jenkinsfile
+- __ALL__ groovy scripts must be put inside a folder named `vars` in our shared library repository
+- methods have to be named `call` (default name Jenkins will use when invoking the custom methods)
+- code inside a call method has to be wrapped in a `node` block (makes it usable as a pipeline step)
+- name of script file needs to be the name we use in the jenkinsfile step
+
+```groovy
+// shared_library/vars/auditTools.groovy - file path location must be in a 'vars' directory
+
+// auditTools.groovy - file name to be used in jenkinsfile step
+
+// method must be named 'call'
+def call() {
+	// code must be wrapped in 'node' block
+	node {
+		sh '''
+		  git version
+		  docker version
+		  dotnet --list-sdks
+		  dotnet --list-runtimes
+	}
+}
+```
+
+# Jenkinsfile Linter API
+Comes bundled with the pipeline plugin. Send a jenkinsfile via a POST request and receive a validation message
+
+## __POST request format__
+`curl -X POST -F "jenkinsfile=<./Jenkinsfile" <jenkins-server-name>/pipeline-model-converter/validate`
+
+```bash
+# bash
+
+# example where the jenkins server were running on our local machine on localhost port 8080
+curl -X POST -F "jenkinsfile=<./Jenkinsfile" http://localhost:8080/pipeline-model-converter/validate
+```
+
+_Note:_ The Jenkins server is the url where your Jenkins Jobs are located
