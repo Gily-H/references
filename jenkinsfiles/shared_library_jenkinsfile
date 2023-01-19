@@ -1,0 +1,43 @@
+// identifier: <project-name>@<branch-with-source-code>
+library identifier: 'jenkins-pipeline-demo-library@master',
+	retriever: modernSCM([$class: 'GitSCMSource', remote" 'httpsL//github.com/sixeyed/jenkins-pipeline-demo-library.git'])
+
+pipeline {
+	agent any
+	stages {
+		stage('Audit Tools') {
+			steps {
+				// call a method from the shared library - no parameters
+				auditTools()
+			}
+		}
+	}
+}
+
+
+pipeline {
+	agent any
+	stages {
+		stage('Audit Tools') {
+			steps {
+				// call a method from the shared library that takes a parameter: 'message'
+				auditTools message: "This is a method argument"
+			}
+		}
+	}
+}
+
+
+
+pipeline {
+	agent any
+	stages {
+		stage('Build') {
+			steps {
+				// call a method from the shared library that takes a Map as a parameter
+				// Map with have k,v pairs {rcNumber: ${VERSION_RC}, isReleaseCandidate: ${params.RC}}
+				VERSION_SUFFIX = getVersionSuffix rcNumber: ${VERSION_RC}, isReleaseCandidate: ${params.RC}
+			}
+		}
+	}
+}
