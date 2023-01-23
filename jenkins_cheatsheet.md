@@ -6,6 +6,13 @@ Jenkins uses Groovy to run pipeline jobs and inherits some properties of Groovy,
 - use __single quotes__ (') for string literals
 - use __triple quotes__ (''') for multiline shell scripts
 
+
+## Master
+Performs the admin work in a job, firing job triggers, and storing job data
+
+## Agent
+Performs the build process outlined in a job
+
 # Jenkinsfile
 Configuration file outlining a __Jenkins Job__, the build process for an application. This file should live in your source code repository
 
@@ -130,6 +137,29 @@ def call() {
 		  dotnet --list-runtimes
 	}
 }
+
+
+// scripts can also contain an entire pipeline
+
+// simplePipeline.groovy
+
+def call() {
+	pipeline {
+		agent any
+		environment {
+			MODULE='m4'
+		}
+		stages {
+			stage('Verify') {
+				steps {
+					echo "Module: ${MODULE}"
+					sh 'git version'
+				}
+			}
+		}
+	}
+}
+
 ```
 
 # Jenkinsfile Linter API
