@@ -176,3 +176,34 @@ curl -X POST -F "jenkinsfile=<./Jenkinsfile" http://localhost:8080/pipeline-mode
 ```
 
 _Note:_ The Jenkins server is the url where your Jenkins Jobs are located
+
+
+
+# GitHub Integration
+
+1. On GitHub, create a PAT for Jenkins
+	- set necessary permissions required by Jenkins
+2. In Jenkins UI -> _Manage Jenkins_ -> _Configure System_ -> add GitHub Server
+3. Create Pipeline Job in Jenkins
+	- _Pipeline script from SCM_ (Jenkinsfile in root dir of project repository)
+
+
+# Documentation
+Scripted-Pipeline -> https://www.jenkins.io/doc/book/pipeline/
+Pipeline-Syntax -> https://www.jenkins.io/doc/book/pipeline/syntax/
+Pipeline-Steps -> https://www.jenkins.io/doc/pipeline/steps/
+
+
+# Glossary
+
+|Term|Description|
+|:-:|:-|
+|Pipeline| A series of tasks required to build, test, and deploy an application|
+|Agent|Defines which Jenkins _build agent_ should run the pipeline|
+|Stage|A section of the pipeline (build, test, deploy)|
+|Step|Specific instructions within a stage|
+
+
+
+
+
