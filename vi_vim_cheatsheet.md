@@ -30,4 +30,19 @@ vi/vim are text editors that allow us to edit files in the command line. `vim` i
 |`j`|Move cursor down one line|
 |`k`|Move cursor up one line|
 |`l`|Move cursor right one character|
+|'u'|Undo previous entry|
+|`/`|Search prompt. Will pattern match the given input|
+|`n`|During a `/`search, will go to next occurrence of a match|
+|`N`|During a `/`search, will go to previous occurrence of a match|
 
+__Search examples__
+```bash
+# vim editor
+
+# search forwards
+/<pattern-to-search>
+
+# search backwards
+?<pattern-to-search>
+
+```
