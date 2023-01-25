@@ -21,6 +21,8 @@
 
 # Shell Scripting
 
+___NOTE: It is now recommended to use the new [[ <expression> ]] format when formulating tests. The following examples still follow old conventions but should be replaced with the new convention `[[` `]]`___
+
 ```bash
 # This is a shebang - used to determine the program that will interpret the script. Add an -x option to turn on tracing (display commands being evaluated)
 #! /bin/bash
@@ -170,6 +172,8 @@ Note: When using parameter expansion or command substitution, wrap the expressio
 
 You can check the exit status value of the previous command by using `echo $?`. Some commands will output a specific integer value (between 0-255) to give meaning to an error. You can check the MAN pages of the command to see the exit status value meaning
 
+___NOTE: It is now recommended to use the new [[ <expression> ]] format when formulating tests. The following examples still follow old conventions but should be replaced with the new convention `[[` `]]`___
+
 ```bash
 if [ -f .bashrc ]; then
 	echo "You have a .bashrc. Things are fine."
@@ -315,6 +319,19 @@ for i in "$@"; do
 	echo $i
 done
 ```
+
+List of function parameters
+|Parameter|Description|
+|:-:|:-|
+|`$0`|Name of the script|
+|`$1-$9`|Arguments to the script|
+|`$@`|All the arguments|
+|`$#`|Number of arguments|
+|`$?`|Return code of previous command|
+|`$$`|PID number for current script|
+|`!!`|Entire last command including arguments|
+|`$_`|Last argument from the last command|
+
 
 ## **Logical Operators**
 The AND `&&` operator will only execute the next command iff the first command's exit status is successful (0)
