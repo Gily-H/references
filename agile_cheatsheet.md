@@ -75,6 +75,44 @@ There is no set units to measure Story Points, however, below are some examples 
 6. Re-estimate until estimates converge
 
 
+## Agile Planning
+- Continuous planning throughout the process
+- Encourage and adapt to change
+- Always transparent
+- Improve by analyzing similar situations that occurred in the past
+
+(Highest level - less frequent change) |Company Vision| -> |Business Strategy| -> |Product Strategy| -> |Product Roadmap| -> |Release Plan| -> |Iteration Plan| -> |Daily Plan| (Lowest level - more frequent change)
+
+
+### Release Planning
+A. Date Target Planning
+	- product will release on a specific date
+B. Feature Target Planning
+	- product will release when the necessary features are completed
+
+- Requires a prioritized and estimated backlog
+- Requires known velocity
+
+
+__Product Backlog Ownership__
+- Split major feature sets into _themes_
+	- Group related product backlog items together under a theme
+
+### Iteration Planning
+Goal of iteration planning is to make a to-do list for the upcoming iteration
+
+Commitment-Based Planning
+- Team commits based on what they believe to be true
+	- Leads to realistic expectations and deliberate thinking
+
+### Daily Planning
+- Sharing commitment
+- Communicate daily plans
+- Identify Impediments
+- Set direction and focus
+- Regularly rally the team
+
+
 # Scrum
 Scrum is one instance of a process that utilizes Agile methodologies
 
