@@ -67,7 +67,7 @@ Items in the Product Backlog can include: features, constraints, bugs/defects, u
 - Has measurable business value
 - Contains criteria for successful completion
 
-### __Spring Backlog__
+### __Sprint Backlog__
 - List of activities the team commits to for a single sprint
 - Created by the Scrum Team
 - Drawn from the Product Backlog items
@@ -142,6 +142,25 @@ Consistent daily meeting by the Scrum Team, facilitated by the Scrum Master (Dai
 1. What will we start doing
 2. What will we stop doing
 3. What will we continue doing
+
+
+
+
+## Enterprise Scrum
+
+
+### Scrum of Scrums
+Scrum meeting for Scrum Masters, where attendees (organizational leaders) should have the power to make decisions on resource allocation
+- Solve problems
+- Remove impediments
+- Coordinate multiple teams
+
+
+### Epics
+Very Large Backlog Items
+- Will be broken down later into Product Backlog items
+
+_Example: As a CTO I want to implement automated builds so that code quality improves_
 
 
 
