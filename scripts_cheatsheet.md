@@ -25,7 +25,10 @@ ___NOTE: It is now recommended to use the new [[ <expression> ]] format when for
 
 ```bash
 # This is a shebang - used to determine the program that will interpret the script. Add an -x option to turn on tracing (display commands being evaluated)
-#! /bin/bash
+#!/bin/bash
+
+# when using another scripting interpretor (e.g. python) it is best practice to use the 'env' command to resolve the path to the interpretor on the system
+#!/usr/bin/env python
 
 # My first script comment
 
