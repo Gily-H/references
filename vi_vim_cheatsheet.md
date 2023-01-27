@@ -16,7 +16,10 @@ vi/vim are text editors that allow us to edit files in the command line. `vim` i
 |`A`|Append to the end of the line|
 |`a`|Append after the cursor's current position|
 |`I`|Insert text at the beginning of the current line|
+|`0`|Go to the beginning of the current line|
+|`$`|Go to the end of the current line|
 |`b`|Go to the beginning of a word|
+|`w`|Go to the next word|
 |`e`|Go to the end of a word|
 |`x`|Delete a single character|
 |`dd`|Delete an entire line|
@@ -34,6 +37,8 @@ vi/vim are text editors that allow us to edit files in the command line. `vim` i
 |`/`|Search prompt. Will pattern match the given input|
 |`n`|During a `/`search, will go to next occurrence of a match|
 |`N`|During a `/`search, will go to previous occurrence of a match|
+|`Ctrl + D`|Scroll down the file|
+|`Ctrl + U`|Scroll up the file
 
 __Search examples__
 ```bash
