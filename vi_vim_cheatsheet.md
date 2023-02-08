@@ -1,5 +1,8 @@
-# Vi/Vim Commands
+# Vi/Vim
+
 vi/vim are text editors that allow us to edit files in the command line. `vim` is an advanced version of `vi` and supports all the same features.
+
+## Vim Commands
 
 |Command|Description|
 |:-:|:-|
@@ -51,3 +54,31 @@ __Search examples__
 ?<pattern-to-search>
 
 ```
+
+
+## Visual Mode
+
+Visual mode has _three_ modes in itself: Character mode, Line Mode, and Block Mode
+
+To enter Character mode in vim, from the command mode we enter the `v` key
+
+To enter Line mode in vim, from the commmand mode we enter the `V` (Shift v) key
+
+To enter block mode in vim, from the command mode we enter `^v` (Ctrl v) key
+
+
+|Command|Description|
+|:-:|:-|
+|v|Enter character mode|
+|V|Enter line mode|
+|^v|Enter block mode|
+
+### Character mode
+
+In character mode, we can highlight parts of a sentence for modification  
+
+Enter _visual character mode_ by entering `v`  
+Highlight text using the arrow keys, or using the `w` key (highlight to next word) or the `$` key (highlight rest of line)
+- enter the `d` key to delete the highlighted text
+- enter the `p` key to paste text
+- enter the `c` key to change the highlighted text (will transition to insert mode)
